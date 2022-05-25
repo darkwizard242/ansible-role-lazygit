@@ -1,0 +1,32 @@
+---
+galaxy_info:
+  role_name: lazygit
+  author: darkwizard242
+  description: Installs/Uninstalls 'lazygit', a simple terminal UI for git commands.
+  company: none
+  license: MIT
+  min_ansible_version: 2.4
+
+  platforms:
+    - name: Ubuntu
+      versions:
+        - jammy
+        - focal
+        - bionic
+    - name: Debian
+      versions:
+        - bullseye
+        - buster
+        - stretch
+    - name: EL
+      versions:
+        - 8
+        - 7
+
+  galaxy_tags:
+    - lazygit
+    - git
+    - cli
+    - system
+    - os
+    - linux

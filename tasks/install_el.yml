@@ -1,0 +1,13 @@
+---
+# tasks file for lazygit | EL Family
+
+- name: EL Family | Downloading and extracting {{ lazygit_app }} {{ lazygit_version }}
+  ansible.builtin.unarchive:
+    src: "{{ lazygit_dl_url }}"
+    dest: "{{ lazygit_bin_path }}"
+    extra_opts:
+      - lazygit
+    remote_src: yes
+    owner: "{{ lazygit_file_owner }}"
+    group: "{{ lazygit_file_group }}"
+    mode: "{{ lazygit_file_mode }}"
