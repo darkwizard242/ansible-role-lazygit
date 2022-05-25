@@ -1,0 +1,10 @@
+---
+# defaults file for lazygit
+
+lazygit_app: lazygit
+lazygit_version: '0.34'
+lazygit_dl_url: https://github.com/jesseduffield/{{ lazygit_app }}/releases/download/v{{ lazygit_version }}/{{ lazygit_app }}_{{ lazygit_version }}_{{ ansible_system }}_{{ ansible_architecture }}.tar.gz
+lazygit_bin_path: /usr/local/bin
+lazygit_file_owner: root
+lazygit_file_group: root
+lazygit_file_mode: '0755'
