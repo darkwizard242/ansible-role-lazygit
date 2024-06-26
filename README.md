@@ -17,7 +17,17 @@ Available variables are listed below (located in `defaults/main.yml`):
 ```yaml
 lazygit_app: lazygit
 lazygit_version: '0.34'
-lazygit_dl_url: https://github.com/jesseduffield/{{ lazygit_app }}/releases/download/v{{ lazygit_version }}/{{ lazygit_app }}_{{ lazygit_version }}_{{ ansible_system }}_{{ ansible_architecture }}.tar.gz
+lazygit_os: "{{ ansible_system }}"
+lazygit_architecture_map:
+  amd64: x86_64
+  arm: arm64
+  x86_64: x86_64
+  armv6l: armv6
+  armv7l: armv7
+  aarch64: arm64
+  32-bit: "386"
+  64-bit: x86_64
+lazygit_dl_url: https://github.com/jesseduffield/{{ lazygit_app }}/releases/download/v{{ lazygit_version }}/{{ lazygit_app }}_{{ lazygit_version }}_{{ lazygit_os }}_{{ lazygit_architecture_map[ansible_architecture] }}.tar.gz
 lazygit_bin_path: /usr/local/bin
 lazygit_file_owner: root
 lazygit_file_group: root
@@ -26,15 +36,17 @@ lazygit_file_mode: '0755'
 
 ### Variables table:
 
-Variable           | Description
------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------
-lazygit_app        | Defines the app to install i.e. **lazygit**
-lazygit_version    | Defined to dynamically fetch the desired version to install. Defaults to: **0.34**
-lazygit_dl_url     | Defines URL to download the lazygit binary from.
-lazygit_bin_path   | Defined to dynamically set the appropriate path to store lazygit binary into. Defaults to (as generally available on any user's PATH): **/usr/local/bin**
-lazygit_file_owner | Owner for the binary file of lazygit.
-lazygit_file_group | Group for the binary file of lazygit.
-lazygit_file_mode  | Mode for the binary file of lazygit.
+Variable                 | Description
+------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------
+lazygit_app              | Defines the app to install i.e. **lazygit**
+lazygit_version          | Defined to dynamically fetch the desired version to install. Defaults to: **0.34**
+lazygit_os               | Defines OS type.
+lazygit_architecture_map | Defines os architecture. Used for obtaining the correct type of binaries based on OS System Architecture.
+lazygit_dl_url           | Defines URL to download the lazygit binary from.
+lazygit_bin_path         | Defined to dynamically set the appropriate path to store lazygit binary into. Defaults to (as generally available on any user's PATH): **/usr/local/bin**
+lazygit_file_owner       | Owner for the binary file of lazygit.
+lazygit_file_group       | Group for the binary file of lazygit.
+lazygit_file_mode        | Mode for the binary file of lazygit.
 
 ## Dependencies
 
